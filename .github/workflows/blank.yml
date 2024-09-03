@@ -16,7 +16,7 @@ jobs:
       id: fc
       with:
         issue-number: 1
-        direction: last
+        direction: first
     - run: |
         echo ${{ steps.fc.outputs.comment-id }}
         echo ${{ steps.fc.outputs.comment-node-id }}
