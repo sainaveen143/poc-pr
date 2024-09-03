@@ -1,7 +1,7 @@
 name: pull request comment
 on:
-  issue_comment:                                     
-    types: [created, edited, deleted]
+  pull_request_review:
+    types: [submitted, edited]
 jobs:
   job01:
   # if: contains(github.event.comment.html_url, '/pull/')    # check if the comments come from pull request, exclude those from issue.
