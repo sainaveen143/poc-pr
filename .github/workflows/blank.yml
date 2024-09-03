@@ -1,0 +1,47 @@
+name: pull request comment
+on:
+  pull_request_review:
+    types: [submitted, edited]
+jobs:
+  job01:
+  # if: contains(github.event.comment.html_url, '/pull/')    # check if the comments come from pull request, exclude those from issue.
+    runs-on: [ubuntu-latest]
+    steps:
+  #   - name: say hello
+  # # if: contains(github.event.comment.body, '/support')   # check the comment if it contains the keywords
+  #     run: |
+  #       echo ${{ github.event.comment.body }}
+  #   - name: Find Comment
+  #     uses: peter-evans/find-comment@v3
+  #     id: fc
+  #     with:
+  #       issue-number: 1
+  #       body-regex: '^\['
+  #       direction: first
+  #   - run: |
+  #       echo ${{ steps.fc.outputs.comment-id }}
+  #       echo ${{ steps.fc.outputs.comment-node-id }}
+  #       echo ${{ steps.fc.outputs.comment-body }}
+  #       echo ${{ steps.fc.outputs.comment-author }}
+  #       echo ${{ steps.fc.outputs.comment-created-at }}
+  #   - name: test
+  #     run: |
+  #       echo test
+
+
+    - name: Checkout the repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Fetch all history to access COMMIT details
+
+    - name: Get Title of Pull Request
+      shell: bash
+      run: |
+        echo "The Title of your PR...."
+        echo ${{ github.event.pull_request.title }}
+        echo "INPUT_STRING=$(echo ${{ github.event.pull_request.title }})" >> $GITHUB_ENV
+
+    - name: test
+      run: |
+        echo test
+
