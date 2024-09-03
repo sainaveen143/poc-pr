@@ -16,7 +16,7 @@ jobs:
       id: fc
       with:
         issue-number: 1
-        body-regex: '^['
+        body-regex: '^/['
         direction: last
     - run: |
         echo ${{ steps.fc.outputs.comment-id }}
